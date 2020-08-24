@@ -1,0 +1,60 @@
+<!-- main app container -->
+<div class="card m-3">
+  <h5 class="card-header">Angular 8 Reactive Form Validation</h5>
+  <div class="card-body">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="form-row">
+              <div class="form-group col-5">
+                  <label>First Name</label>
+                  <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                  <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                      <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                  </div>
+              </div>
+              <div class="form-group col-5">
+                  <label>Last Name</label>
+                  <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                  <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                      <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                  </div>
+              </div>
+          </div>
+          <div class="form-group">
+              <label>Email</label>
+              <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.errors.required">Email is required</div>
+                  <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+              </div>
+          </div>
+          <div class="form-group">
+              <label>Type</label>
+              <input type="text" formControlName="typeVal" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.typeVal.errors }" />
+              <div *ngIf="submitted && f.typeVal.errors" class="invalid-feedback">
+                  <div *ngIf="f.typeVal.errors.required">Type is required</div>
+              </div>
+          </div>            
+          <div class="form-row">
+              <div class="form-group col">
+                  <label>Access Key</label>
+                  <input type="password" formControlName="access_key" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.access_key.errors }" />
+                  <div *ngIf="submitted && f.access_key.errors" class="invalid-feedback">
+                      <div *ngIf="f.access_key.errors.required">Access Key is required</div>
+                  </div>
+              </div>
+              <div class="form-group col">
+                  <label>secret_key</label>
+                  <input type="password" formControlName="secret_key" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.secret_key.errors }" />
+                  <div *ngIf="submitted && f.secret_key.errors" class="invalid-feedback">
+                      <div *ngIf="f.secret_key.errors.required">Secret Key is required</div>
+                  </div>
+              </div>
+          </div>
+        
+          <div class="text-center">
+              <button class="btn btn-primary mr-1">Register</button>
+              <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+          </div>
+      </form>
+  </div>
+</div>
